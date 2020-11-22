@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Main Page</title>
+<!--Bootstrap-->      
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+   
+     <!--Firebase Scripts-->
+    <script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-storage.js"></script>
+    
+</head>
+<body class="h-100">
+  <nav class='navbar navbar-expand-lg bg-white text-dark'>
+      <div class="container-fluid">
+         <ul class='nav navbar-nav'>
+             <li class='active'>
+               <a class='navbar-brand' style = "color: black; text-decoration-style:wavy;" onclick="switchView('frontpage.html')">
+                 Blog App
+               </a>
+             </li>
+
+             <li>
+                <a class='nav-link' style = 'color: black; text-decoration-style:wavy;' onclick="switchView('home.html')">
+                  <span style='color: black'> Home </span>
+                </a>
+              </li>
+
+              <li>
+                <a class='nav-link' style = 'color: black; text-decoration-style:wavy;' onclick="switchView('myblogs.html')" >
+                    <span style='color: black'> My Blogs </span>
+                </a>
+              </li>
+
+         </ul>
+
+         <div class="dropdown navbar-right">
+             <button
+             id="option-id"
+             type="button"
+            class="btn btn-light dropdown-toggle bg-white text-black"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+            style="border: 2px black solid; border-radius: 20px; color: black;"
+            >
+                 Options
+             </button>
+             <div
+             class="dropdown-menu"
+             aria-labelledby="option-id"
+             >
+              <a id="btn-logout" class="dropdown-item"  href="#">
+                Logout
+              </a> 
+             </div>
+
+    
+
+         </div>
+      </div>
+  </nav>  
+
+   <div class='row h-100' style="background: rgb(207,241,248);
+   background: linear-gradient(0deg, rgba(207,241,248,1) 0%, rgba(216,236,235,1) 45%, rgba(255,255,255,1) 74%);">
+    <div class='col-lg-0'>
+      <ul class='nav flex-column'>
+
+      </ul>
+     
+    
+    
+    </div>
+    <div class='col-lg-12'>
+      <div class='container' id='container'>
+        <div class = 'text-center text-dark' style="margin-top: 20px;"> 
+
+          <h3>Publish your passions, your way </h3><br>
+          <p>Create a unique and beautiful blog, its free!</p>
+          <img src='design_files/images/undraw_fashion_blog.png' width="100%"/>
+      </div>
+      
+      <div class="container" style="background:white; height: 60vh;">
+       <div class="row">
+           <div class="col-lg-6" style="margin-top: 100px;">
+               <h3 class="text-center" style="color: rgb(224, 101, 142);">Why should you blog?</h3>
+               <ul style="margin-left: 120px; padding:10px; list-style-image:url(./design_files/images/icons8-check-mark-16.png);">
+                <li style="margin-top:20px; font-style:italic;">You can manage your online identity and build trust.</li>
+                <li style="margin-top:20px; font-style:italic;">You will learn new things.</li>  
+                <li style="margin-top:20px; font-style:italic;">You will improve your writing skills. </li> 
+                <li style="margin-top:20px; font-style:italic;">You could become proficient in a new language. </li>
+                <li style="margin-top:20px; font-style:italic;"> You will connect with new people. </li>
+               <li style="margin-top:20px; font-style:italic;">You will get proclaimed an expert.</li>
+              
+                
+            </ul>
+               
+           </div>
+           <div class="col-lg-6 text-center" style="margin-top:100px;">
+               <img src='design_files/images/undraw_blog_new.png' style="height: 350px; width: 300px;">
+           </div>
+          </div>
+       </div>
+      
+      </div>
+    </div>
+   </div>
+
+
+    <script src='./js/index.js'></script>
+<script>
+    firebase.auth().onAuthStateChanged(function(user){
+       if(!user){
+           window.location.href = "signin.html";
+       }
+    });
+</script>
+</body>
+</html>

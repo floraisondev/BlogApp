@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Account Settings</title>
+        
+  <!--Bootstrap-->      
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        
+        
+        <!-- MATERIAL DESIGN ICONIC FONT -->
+    <link rel="stylesheet" href="design_files/fonts/material-design-iconic-font/css/material-design-iconic-font.min.css">
+            
+            <!-- STYLE CSS -->
+    <link rel="stylesheet" href="design_files/css/style.css">
+     <!--Firebase Scripts-->
+    <script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-storage.js"></script>
+</head>
+<body>
+    <div class='wrapper' style = 'background: rgb(238,174,202);
+    background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);'>
+   <div class='inner'>
+       <div class="image-holder">
+           <img src='design_files/images/undraw_profile.png' style="height: 400px; margin-top: 75px;">
+       </div>
+    <form action=''>
+        <h3>Account Settings</h3>
+        <div class="form-group">
+            <input id='firstName' type='text' placeholder="First name" class='form-control'>
+            <input id='secondName' type='text' placeholder="Last name" class='form-control'>
+            
+        </div>
+
+        <div class="form-wrapper">
+            <select name = "" id= "country" class="form-control">
+                <option value ="" disabled selected>Country</option>
+                <option value ="South Africa">South Africa</option>
+                <option value ="USA">USA</option>
+                <option value ="India">India</option>
+                <option value ="China">China</option>
+            </select>
+            <i class="zmdi zmdi-caret-down" style="font-size: 17px;"></i>
+        </div>
+
+        <div class="form-wrapper">
+            <input id='phone' type='number' placeholder="Phone Number" class='form-control'>
+            <i class="zmdi zmdi-tablet-mac"></i>
+        </div>
+
+        <div class="form-wrapper">
+            <select name = "" id= "gender" class="form-control">
+                <option value ="" disabled selected>Select gender</option>
+                <option value ="male">Male</option>
+                <option value ="female">Female</option>
+                <option value ="other">Other</option>
+                
+            </select>
+            <i class="zmdi zmdi-caret-down" style="font-size: 17px;"></i>
+        </div>
+
+        <div class="form-wrapper">
+            <input id='address' type='text' placeholder="Address" class='form-control'>
+            <i class="zmdi zmdi-account-pin"></i>
+        </div>
+
+        <div class="form-wrapper">
+            <input id='bio' type='text' placeholder="Bio" class='form-control'>
+            <i class="zmdi zmdi-account-box-mail"></i>
+        </div>
+
+       <div class='form-group container-login100-form-btn'>
+            <button id='btn-update' type='button'>
+                Update & Set 
+                <i class='zmdi zmdi-arrow-right'></i>
+            </button>
+        </div>
+
+        
+        
+    </form>
+   </div>
+    
+    
+</div>
+<script src='./js/index.js'></script>
+<script>
+    firebase.auth().onAuthStateChanged(function(user){
+        if(user)
+        {
+            firebase.database().ref('Users/' + userID).once('value').then(function(snapshot)
+            {
+                if(snapshot.val())
+                {
+                    window.location.href = 'MainPage.html';
+                }
+               
+            });
+            
+        }
+    });
+</script>
+
+</body>
+</html>
